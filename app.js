@@ -25,3 +25,5 @@ module.exports = function(stockRepository) {
 
     return app;
 };
+
+//mongodb://heroku_x4k3dlv1:1e7mnuogodlnvf2aiavskc0mur@ds047955.mongolab.com:47955/heroku_x4k3dlv1

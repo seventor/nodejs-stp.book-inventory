@@ -1,4 +1,4 @@
-var url = 'mongodb://localhost:27017/book_inventory_1';
+var url = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/book_inventory_1';
 var MongoClient = require('mongodb').MongoClient;
 var connection = MongoClient.connect(url);
 
@@ -6,12 +6,12 @@ module.exports = function () {
     return {
         findAll: function () {
             return connection.then(function (db) {
-                return db.collection('bookss').find({}).toArray();
+                return db.collection('books').find({}).toArray();
             });
         },
         stockUp: function (isbn, count) {
             return connection.then(function (db) {
-                return db.collection('bookss').updateOne({isbn: isbn}, {
+                return db.collection('books').updateOne({isbn: isbn}, {
                     isbn: isbn,
                     count: count
                 }, {upsert: true});
@@ -19,7 +19,7 @@ module.exports = function () {
         },
         getCount: function (isbn) {
             return connection.then(function (db) {
-                return db.collection('bookss').find({"isbn": isbn}).limit(1).next();
+                return db.collection('books').find({"isbn": isbn}).limit(1).next();
             }).then(function (result) {
                 if (result) {
                     return result.count;

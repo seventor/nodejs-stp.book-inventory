@@ -9,7 +9,7 @@
     "lint": "jshint --exclude=node_modules/** **.js",
     "test:xunit": "npm run test -- --reporter xunit",
     "watch": "nodemon index.js",
-    "smoke": "curl -I -f https://test-nodejs-stp-book-inventory.herokuapp.com/stock/2222"
+    "smoke": "curl -I -f https://test-nodejs-stp-book-inventory.herokuapp.com/"
   },
   "author": "",
   "license": "ISC",
